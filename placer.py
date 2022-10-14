@@ -28,6 +28,9 @@ class Placer:
             ValueError: If the scale is negative.
         """   
 
+        if(mirror_target):
+            raise NotImplementedError("mirror_target property not implemented.")
+
         if(colour > 31):
             raise ValueError ("colour can't be higher than 31, as Maya's colour indices end at 31")
         if(scale < 0):
@@ -77,3 +80,6 @@ class Placer:
         cmds.makeIdentity(self.curve_node, apply=True)
         # Now move it.
         cmds.move(self.pos[0], self.pos[1], self.pos[2], self.curve_node)
+
+    def __str__(self):
+        return(self.name)
